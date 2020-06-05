@@ -11,6 +11,7 @@
   position: absolute;
   top: 0;
   @apply w-full h-full;
+  @apply z-10;
 }
 
 .container {
@@ -20,6 +21,7 @@
   left: 0;
   @apply w-full h-12;
   @apply flex justify-between items-center;
+  @apply z-20;
 }
 
 .container > * {
@@ -27,7 +29,7 @@
 }
 
 .menu {
-  @apply z-50;
+  @apply z-30;
 }
 
 .navMobile {

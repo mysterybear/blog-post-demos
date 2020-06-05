@@ -63,7 +63,7 @@ export const MenuToggle = props => (
 
 const Nav = props => (
   <nav {...props}>
-    <Link href="/">Home</Link>
+    <Link href="/">Page One</Link>
     <Link href="/page-two">Page Two</Link>
   </nav>
 )
