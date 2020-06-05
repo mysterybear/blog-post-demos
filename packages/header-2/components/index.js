@@ -97,8 +97,8 @@ const Header = () => {
       />
       <Container>
         <Branding />
-        {open && <Nav className={styles.navMobile} />}
         <MenuToggle onClick={toggleOpen} className={styles.menu} />
+        {open && <Nav className={styles.navMobile} />}
         <Nav className={styles.navDesktop} />
       </Container>
     </Root>

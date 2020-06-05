@@ -1,8 +1,9 @@
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion"
 import Link from "next/link"
 import React, { useState } from "react"
 import theme from "tailwindcss/defaultTheme"
 import styles from "./index.module.css"
+import { useRouter } from "next/router"
 
 export { styles }
 
@@ -72,15 +73,26 @@ const links = [
   { href: "/page-two", label: "Page Two" },
 ]
 
-const Nav = ({
-  children = ({ href, label }) => (
-    <Link key={href} href={href}>
+const NavLink = ({ children, href, label, ...props }) => {
+  const { pathname } = useRouter()
+  const pathBeginning = `/${pathname.split("/")[1]}`
+  const active = pathBeginning === href
+  return children ? (
+    children({ href, label, active, ...props })
+  ) : (
+    <Link key={href} href={href} {...props}>
       <a>{label}</a>
     </Link>
-  ),
-  ...restProps
-}) => {
-  return <motion.nav {...restProps}>{links.map(children)}</motion.nav>
+  )
+}
+const Nav = ({ children, ...props }) => {
+  return (
+    <motion.nav {...props}>
+      {links.map(linkProps => (
+        <NavLink key={linkProps.href} children={children} {...linkProps} />
+      ))}
+    </motion.nav>
+  )
 }
 
 const Header = () => {
@@ -92,6 +104,7 @@ const Header = () => {
     mass: 0.9,
     stiffness: 120,
   }
+
   return (
     <Root animate={open ? "open" : "closed"} initial="closed">
       <Backdrop
@@ -111,6 +124,7 @@ const Header = () => {
       />
       <Container>
         <Branding />
+        <MenuToggle onClick={toggleOpen} className={styles.menu} />
         <AnimatePresence>
           {open && (
             <Nav
@@ -133,9 +147,8 @@ const Header = () => {
               animate="open"
               exit="closed"
             >
-              {({ href, label }) => (
+              {({ href, label, active }) => (
                 <motion.div
-                  key={href}
                   initial="closed"
                   variants={{
                     open: {
@@ -145,17 +158,28 @@ const Header = () => {
                       opacity: 0,
                     },
                   }}
+                  onClick={() => void setOpen(false)}
                 >
                   <Link href={href}>
-                    <a>{label}</a>
+                    <a data-active={active}>{label}</a>
                   </Link>
                 </motion.div>
               )}
             </Nav>
           )}
         </AnimatePresence>
-        <MenuToggle onClick={toggleOpen} className={styles.menu} />
-        <Nav className={styles.navDesktop} />
+        <AnimateSharedLayout>
+          <Nav className={styles.navDesktop}>
+            {({ href, label, active }) => (
+              <Link href={href}>
+                <a>
+                  <span>{label}</span>
+                  {active && <motion.div layoutId="underline" />}
+                </a>
+              </Link>
+            )}
+          </Nav>
+        </AnimateSharedLayout>
       </Container>
     </Root>
   )
