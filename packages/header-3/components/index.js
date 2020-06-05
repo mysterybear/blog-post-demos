@@ -121,6 +121,7 @@ const Header = () => {
             transition,
           },
         }}
+        data-open={open}
       />
       <Container>
         <Branding />
