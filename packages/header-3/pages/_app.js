@@ -1,12 +1,12 @@
-import { Layout } from "../components";
-import "./_app.css";
+import { Layout } from "../components"
+import "./_app.css"
 
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Layout>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

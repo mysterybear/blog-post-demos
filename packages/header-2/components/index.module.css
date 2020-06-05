@@ -6,6 +6,10 @@
   @apply bg-red-400;
 }
 
+.main {
+  @apply absolute w-full h-full;
+  composes: center;
+}
 .backdrop {
   background-color: inherit;
   position: absolute;

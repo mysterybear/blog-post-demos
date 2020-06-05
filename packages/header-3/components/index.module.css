@@ -45,6 +45,11 @@
   @apply hidden;
 }
 
+.main {
+  @apply absolute w-full h-full;
+  composes: center;
+}
+
 @screen sm {
   .navMobile,
   .menu {

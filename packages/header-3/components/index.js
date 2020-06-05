@@ -1,28 +1,28 @@
-import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
-import React, { useState } from "react";
-import theme from "tailwindcss/defaultTheme";
-import styles from "./index.module.css";
+import { AnimatePresence, motion } from "framer-motion"
+import Link from "next/link"
+import React, { useState } from "react"
+import theme from "tailwindcss/defaultTheme"
+import styles from "./index.module.css"
 
-export { styles };
+export { styles }
 
 export const Viewport = props => (
   <div className={styles.viewport}>
     <div {...props} />
   </div>
-);
+)
 
 export const Root = props => (
   <motion.header className={styles.root} {...props} />
-);
+)
 
 export const Backdrop = props => (
   <motion.div className={styles.backdrop} {...props} />
-);
+)
 
 export const Container = props => (
   <div className={styles.container} {...props} />
-);
+)
 
 const Path = props => (
   <motion.path
@@ -32,7 +32,7 @@ const Path = props => (
     strokeLinecap="round"
     {...props}
   />
-);
+)
 
 export const MenuToggle = props => (
   <button {...props}>
@@ -59,18 +59,18 @@ export const MenuToggle = props => (
       />
     </svg>
   </button>
-);
+)
 
 const Branding = () => (
   <div>
     <h1>Branding</h1>
   </div>
-);
+)
 
 const links = [
   { href: "/", label: "Page One" },
   { href: "/page-two", label: "Page Two" },
-];
+]
 
 const Nav = ({
   children = ({ href, label }) => (
@@ -80,18 +80,18 @@ const Nav = ({
   ),
   ...restProps
 }) => {
-  return <motion.nav {...restProps}>{links.map(children)}</motion.nav>;
-};
+  return <motion.nav {...restProps}>{links.map(children)}</motion.nav>
+}
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
-  const toggleOpen = () => void setOpen(p => !p);
+  const [open, setOpen] = useState(false)
+  const toggleOpen = () => void setOpen(p => !p)
   const transition = {
     type: "spring",
     damping: 25,
     mass: 0.9,
     stiffness: 120,
-  };
+  }
   return (
     <Root animate={open ? "open" : "closed"} initial="closed">
       <Backdrop
@@ -158,12 +158,12 @@ const Header = () => {
         <Nav className={styles.navDesktop} />
       </Container>
     </Root>
-  );
-};
+  )
+}
 
 export const Layout = ({ children }) => (
   <>
     <Header />
-    {children}
+    <main className={styles.main}>{children}</main>
   </>
-);
+)

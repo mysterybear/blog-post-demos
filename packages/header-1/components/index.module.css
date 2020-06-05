@@ -20,6 +20,11 @@
   @apply flex justify-center items-center;
 }
 
+.main {
+  @apply absolute w-full h-full;
+  composes: center;
+}
+
 .root {
   @apply bg-red-400;
 }
