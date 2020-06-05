@@ -1,0 +1,60 @@
+.center {
+  @apply flex justify-center items-center;
+}
+
+.root {
+  @apply bg-red-400;
+}
+
+.backdrop {
+  background-color: inherit;
+  position: absolute;
+  top: 0;
+  @apply w-full h-full;
+}
+
+.container {
+  background-color: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  @apply w-full h-12;
+  @apply flex justify-between items-center;
+}
+
+.container > * {
+  @apply p-2;
+}
+
+.menu {
+  @apply z-50;
+}
+
+.navMobile {
+  @apply w-full h-full;
+  @apply fixed inset-0;
+  @apply flex flex-col;
+  @apply justify-center items-center;
+}
+
+.navMobile > * + * {
+  @apply mt-4;
+}
+
+.navDesktop {
+  @apply hidden;
+}
+
+@screen sm {
+  .navMobile,
+  .menu {
+    @apply hidden;
+  }
+
+  .navDesktop {
+    @apply block;
+  }
+  .navDesktop > *:not(:last-child) {
+    @apply mr-4;
+  }
+}
