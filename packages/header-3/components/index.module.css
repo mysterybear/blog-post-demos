@@ -1,7 +1,3 @@
-.center {
-  @apply flex justify-center items-center;
-}
-
 .root {
   @apply bg-red-400;
 }
@@ -28,52 +24,12 @@
   @apply p-2;
 }
 
-.menu {
-  @apply z-30;
-}
-
-.navMobile {
-  @apply w-full h-full;
-  @apply fixed inset-0;
-  @apply flex flex-col;
-  @apply justify-center items-center;
-}
-
-.navMobile > * + * {
-  @apply mt-4;
-}
-
-.navMobile a[data-active="true"] {
-  @apply text-blue-500;
-}
-
-.navDesktop {
-  @apply hidden;
-}
-
 .main {
   @apply absolute w-full h-full;
-  composes: center;
+  @apply flex justify-center items-center;
 }
 
 @screen sm {
-  .navMobile,
-  .menu {
-    @apply hidden;
-  }
-  .navDesktop {
-    @apply flex;
-  }
-  .navDesktop > *:not(:last-child) {
-    @apply mr-4;
-  }
-  .navDesktop a {
-    @apply relative;
-  }
-  .navDesktop a > div {
-    @apply absolute w-full border-b-2 border-blue-500;
-    bottom: -2;
-  }
   .backdrop {
     transform: translateY(calc(-100% + theme("spacing.12"))) !important;
   }
