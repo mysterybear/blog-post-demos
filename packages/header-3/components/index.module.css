@@ -1,20 +1,12 @@
-.root {
-  @apply bg-red-400;
-}
-
 .backdrop {
-  background-color: inherit;
-  position: absolute;
-  top: 0;
+  @apply bg-red-300;
+  @apply absolute top-0 left-0;
   @apply w-full h-full;
   @apply z-10;
 }
 
 .container {
-  background-color: inherit;
-  position: absolute;
-  top: 0;
-  left: 0;
+  @apply absolute top-0 left-0;
   @apply w-full h-12;
   @apply flex justify-between items-center;
   @apply z-20;
