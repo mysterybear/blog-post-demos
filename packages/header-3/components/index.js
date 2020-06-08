@@ -1,18 +1,11 @@
 import { motion } from "framer-motion"
 import React from "react"
-import theme from "tailwindcss/defaultTheme"
 import Header from "./header"
 import styles from "./index.module.css"
 
 export { default as Nav } from "./nav"
 export { styles }
 
-const transition = {
-  type: "spring",
-  damping: 25,
-  mass: 0.9,
-  stiffness: 120,
-}
 export const Viewport = props => (
   <div className={styles.viewport}>
     <div {...props} />
@@ -24,23 +17,7 @@ export const Root = props => (
 )
 
 export const Backdrop = props => (
-  <motion.div
-    className={styles.backdrop}
-    variants={{
-      closed: {
-        y: `calc(-100% + ${theme.spacing[12]})`,
-        transition: {
-          ...transition,
-          delay: 0.6,
-        },
-      },
-      open: {
-        y: 0,
-        transition,
-      },
-    }}
-    {...props}
-  />
+  <motion.div className={styles.backdrop} {...props} />
 )
 
 export const Container = props => (

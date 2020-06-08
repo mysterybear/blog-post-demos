@@ -1,8 +1,16 @@
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion"
 import Link from "next/link"
 import React, { useState } from "react"
+import theme from "tailwindcss/defaultTheme"
 import { Backdrop, Branding, Container, MenuToggle, Nav, Root } from "."
 import styles from "./header.module.css"
+
+const transition = {
+  type: "spring",
+  damping: 25,
+  mass: 0.9,
+  stiffness: 120,
+}
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -10,7 +18,22 @@ export default function Header() {
 
   return (
     <Root animate={open ? "open" : "closed"} initial="closed">
-      <Backdrop data-open={open} />
+      <Backdrop
+        data-open={open}
+        variants={{
+          closed: {
+            y: `calc(-100% + ${theme.spacing[12]})`,
+            transition: {
+              ...transition,
+              delay: 0.5,
+            },
+          },
+          open: {
+            y: 0,
+            transition,
+          },
+        }}
+      />
       <Container>
         <Branding />
         <MenuToggle onClick={toggleOpen} className={styles.menu} />
@@ -22,7 +45,7 @@ export default function Header() {
                 open: {
                   transition: {
                     staggerChildren: 0.3,
-                    delayChildren: 0.5,
+                    delayChildren: 0.3,
                   },
                 },
                 closed: {
