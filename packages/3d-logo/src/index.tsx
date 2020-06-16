@@ -7,7 +7,11 @@ import styles from "./index.module.css"
 const App3D = () => (
   <mesh>
     <boxGeometry attach="geometry" />
-    <meshBasicMaterial color="pink" attach="material" />
+    {["red", "blue", "green"]
+      .flatMap(x => [x, x])
+      .map(color => (
+        <meshBasicMaterial color={color} attachArray="material" />
+      ))}
   </mesh>
 )
 
