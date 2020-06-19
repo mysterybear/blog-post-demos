@@ -39,7 +39,7 @@ const B = props => {
   )
 }
 
-const Logo = () => {
+const Spinner = () => {
   const groupRef: MutableRefObject<any> = useRef()
   const x = useSpring(0, { damping: 0, mass: 10, stiffness: 70 })
   useFrame(() => {
@@ -57,7 +57,7 @@ const Logo = () => {
   )
 }
 
-const Logo3D = props => {
+const Spinner3D = props => {
   return (
     <Canvas
       colorManagement
@@ -68,9 +68,9 @@ const Logo3D = props => {
       orthographic
       {...props}
     >
-      <Logo />
+      <Spinner />
     </Canvas>
   )
 }
 
-export default Logo3D
+export default Spinner3D

@@ -1,7 +1,7 @@
 import { useInView } from "react-intersection-observer"
 import dynamic from "next/dynamic"
 
-const Logo3D = dynamic(() => import("../components/logo-3d"))
+const Spinner3D = dynamic(() => import("../components/spinner-3d"))
 
 const Content = ({ color }) => {
   const classNameContent = color => `
@@ -26,7 +26,7 @@ export default () => {
       <Content color="blue" />
       <Content color="pink" />
       <div ref={inViewRef} className="relative w-full h-64 bg-indigo-300">
-        {inView && <Logo3D />}
+        {inView && <Spinner3D />}
       </div>
       <Content color="green" />
     </div>
