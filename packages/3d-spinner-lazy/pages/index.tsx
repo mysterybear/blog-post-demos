@@ -3,14 +3,9 @@ import dynamic from "next/dynamic"
 
 const Spinner3D = dynamic(() => import("../components/spinner-3d"))
 
-const Content = ({ color }) => {
-  const classNameContent = color => `
-  flex justify-center items-center
-  w-full h-64 py-64
-  bg-${color}-500
-  `
+const Content = () => {
   return (
-    <div className={classNameContent(color)}>
+    <div className="flex justify-center items-center w-full h-64 py-64 border">
       <p>Some Content...</p>
     </div>
   )
@@ -23,12 +18,12 @@ export default () => {
   })
   return (
     <div>
-      <Content color="blue" />
-      <Content color="pink" />
-      <div ref={inViewRef} className="relative w-full h-64 bg-indigo-300">
+      <Content />
+      <Content />
+      <div ref={inViewRef} className="relative w-full h-64 border">
         {inView && <Spinner3D />}
       </div>
-      <Content color="green" />
+      <Content />
     </div>
   )
 }
