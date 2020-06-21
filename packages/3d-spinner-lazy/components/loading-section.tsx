@@ -23,6 +23,7 @@ export default function LoadingSection() {
   }
   return (
     <section className="flex justify-center items-center h-64 w-full relative">
+      <h1>hi</h1>
       <AnimatePresence exitBeforeEnter>
         {loading ? (
           <motion.div
