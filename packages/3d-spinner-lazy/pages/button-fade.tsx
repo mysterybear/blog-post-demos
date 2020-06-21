@@ -1,9 +1,9 @@
 import { useInView } from "react-intersection-observer"
-import dynamic from "next/dynamic"
+import loadable from "@loadable/component"
 import { useState } from "react"
 import { motion } from "framer-motion"
 
-const Spinner3D = dynamic(() => import("../components/spinner-3d"))
+const Spinner3D = loadable(() => import("../components/spinner-3d"))
 
 const Content = () => {
   return (
