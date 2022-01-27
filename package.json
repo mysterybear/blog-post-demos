@@ -8,6 +8,6 @@
     "drei": "^0.0.60",
     "framer-motion": "^1.11.1",
     "react-three-fiber": "^4.2.10",
-    "three": "^0.117.1"
+    "three": "^0.137.0"
   }
 }
